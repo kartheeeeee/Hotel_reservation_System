@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Booking</title>
+    <style>
+        /* Basic page styling */
+        body, html {
+  height: 100%;
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+body {
+  background-image: url('https://assets.architecturaldigest.in/photos/62be15e36c56dcc849c3b413/16:9/w_2560%2Cc_limit/Eco%2520conscious%2520travel');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.topnav {
+  overflow: hidden;
+  background-color: #1d6b0489;
+}
+
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 24px 15px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav a:hover {
+  background-color: #a89e9e;
+  color: rgba(178, 199, 21, 0.852);
+}
+
+.topnav a.active {
+  background-color: #878282;
+  color: white;
+}
+
+.topnav-right {
+  float: right;
+}
+
+
+.center {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;}
+      
+
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        form {
+            margin-bottom: 20px;
+        }
+
+        input[type="text"], input[type="number"], input[type="submit"] {
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            width: 100%;
+            font-size: 16px;
+        }
+
+        /* Popup styles */
+        .popup {
+            display: none; /* Hidden by default */
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); /* Black background with opacity */
+        }
+
+        .popup-content {
+            position: relative;
+            margin: 15% auto;
+            padding: 20px;
+            background-color: white;
+            width: 80%;
+            max-width: 400px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .popup-content h3 {
+            color: #333;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 20px;
+            cursor: pointer;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <body>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="S_1.css">
+ 
+    
+    <div class="topnav">
+        <a href="#home"><i class="fa fa-fw fa-home"></i> Home</a>
+      <a href="coupon_html.html"><i class="fa fa-fw fa-ticket"></i>Tickets</a></a>
+      <a href=""><i class="fa fa-fw fa-bus"></i>Transport</a></a>
+      <a href=""><i class="fa fa-fw fa-Food"></i>Restuarants</a>
+      <div class="topnav-right">
+        <a href="Bill.html"onclick="openPopup()"><i class="fa fa-fw fa-bill"></i>Bill</a>
+        <a href="help.html"onclick="openPopup()"><i class="fa fa-fw fa-envelope"></i>Help</a>
+        <a href="#clients" onclick="toggleDropdown()"><i class="fa fa-fw fa-user"></i>Profile</a>
+        
+        
+      </div>
+     
+    </div>
+    </div>
+
+<div class="container">
+    <h2>Book Your Hotel</h2>
+    <form id="booking-form">
+       
+        <input type="number" placeholder="Number of Nights" id="nights" required>
+        <input type="submit" value="Calculate">
+    </form>
+</div>
+
+<!-- Popup -->
+<div id="booking-popup" class="popup">
+    <div class="popup-content">
+        <span class="close-btn" onclick="closePopup()">&times;</span>
+        <h3>Booking amount</h3>
+        <p>Your room will be approximate to the amount of <span id="amount"></span> USD.</p>
+    </div>
+</div>
+
+<script>
+    // JavaScript to handle popup and booking logic
+    document.getElementById("booking-form").addEventListener("submit", function(event) {
+        event.preventDefault(); // Prevent form submission
+        
+        // Calculate amount (e.g., 100 USD per night)
+        var nights = document.getElementById("nights").value;
+        var amount = nights * 1500; // Assuming 100 USD per night
+
+        // Display the amount in the popup
+        document.getElementById("amount").textContent = amount;
+
+        // Show the popup
+        document.getElementById("booking-popup").style.display = "block";
+    });
+
+    // Function to close the popup
+    function closePopup() {
+        document.getElementById("booking-popup").style.display = "none";
+    }
+
+    // Close the popup when clicking outside of it
+    window.onclick = function(event) {
+        var popup = document.getElementById("booking-popup");
+        if (event.target == popup) {
+            popup.style.display = "none";
+        }
+    }
+</script>
+
+<div id="help-popup" class="popup">
+    <div class="popup-content">
+        <span class="close-btn" onclick="closePopup()">&times;</span>
+        <h2>How to Book a Hotel</h2>
+        <p>Follow these steps to book a hotel room:</p>
+        <ol>
+            <li>kindly update the form in the given page</li>
+            <li>Browse through the search button and select the one that suits your needs.</li>
+            <li>Click the "Book Now" button next to your chosen Hotel.</li>
+            <li>choose the room </li>
+            <li>Review your booking details and click "Confirm Booking".</li>
+            <li>You will receive a confirmation email with your booking details.</li>
+        </ol>
+    </div>
+  </div>
+  
+  <script>
+    // Function to open the popup
+    function openPopup() {
+        document.getElementById("help-popup").style.display = "block";
+    }
+  
+    // Function to close the popup
+    function closePopup() {
+        document.getElementById("help-popup").style.display = "none";
+    }
+  
+    // Close the popup if the user clicks outside the popup content
+    window.onclick = function(event) {
+        var popup = document.getElementById("help-popup");
+        if (event.target == popup) {
+            popup.style.display = "none";
+        }
+    }
+  </script>
+</body>
+</html>

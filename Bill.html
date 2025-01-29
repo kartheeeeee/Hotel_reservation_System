@@ -1,0 +1,255 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Booking</title>
+    <style>
+        /* Basic page styling */
+        body, html {
+  height: 100%;
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+body {
+  background-image: url('https://assets.architecturaldigest.in/photos/62be15e36c56dcc849c3b413/16:9/w_2560%2Cc_limit/Eco%2520conscious%2520travel');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.topnav {
+  overflow: hidden;
+  background-color: #1d6b0489;
+}
+
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 24px 15px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav a:hover {
+  background-color: #a89e9e;
+  color: rgba(178, 199, 21, 0.852);
+}
+
+.topnav a.active {
+  background-color: #878282;
+  color: white;
+}
+
+.topnav-right {
+  float: right;
+}
+
+
+.center {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;}
+            
+            body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+           
+
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #28a745;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+
+        .apply-coupon {
+            background-color: #007bff;
+            margin-top: 10px;
+        }
+
+        .apply-coupon:hover {
+            background-color: #0056b3;
+        }
+
+        .total-bill {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .discount {
+            color: red;
+            font-size: 14px;
+        }
+
+        .video-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1;
+        }
+
+        .video-background video {
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            object-fit: cover;
+            z-index: -1;
+        }
+
+       
+    </style>
+
+</head>
+<body>
+    <body>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <div class="topnav">
+          
+          <a href="coupon_html.html"><i class="fa fa-fw fa-ticket"></i>Coupons</a></a>
+        
+            
+</body>
+<body>
+        <!-- Background Video -->
+        <div class="video-background">
+            <video autoplay muted loop>
+                <source src="https://videos.pexels.com/video-files/852122/852122-sd_640_360_30fps.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+
+        <body>
+            <div class="container">
+                <h2>Hotel Booking Bill</h2>
+                <div class="input-group">
+                    <label for="room-rate">Room Rate ($):</label>
+                    <input type="number" id="room-rate" placeholder="Enter room rate">
+                </div>
+                <div class="input-group">
+                    <label for="service-tax">Service Tax (%):</label>
+                    <input type="number" id="service-tax" placeholder="Enter service tax">
+                </div>
+                <div class="input-group">
+                    <label for="extra-activities">Extra Activities ($):</label>
+                    <input type="number" id="extra-activities" placeholder="Enter extra charges">
+                </div>
+                <div class="input-group">
+                    <label for="coupon-code">Coupon Code:</label>
+                    <input type="text" id="coupon-code" placeholder="Enter coupon code">
+                </div>
+                <button onclick="calculateBill()">Calculate Total Bill</button>
+                <button class="apply-coupon" onclick="applyCoupon()">Apply Coupon</button>
+                <div class="total-bill" id="total-bill"></div>
+            </div>
+        
+            <script>
+                let totalBillAmount = 0;
+        
+                function calculateBill() {
+                    const roomRate = parseFloat(document.getElementById('room-rate').value) || 0;
+                    const serviceTax = parseFloat(document.getElementById('service-tax').value) || 0;
+                    const extraActivities = parseFloat(document.getElementById('extra-activities').value) || 0;
+        
+                    // Calculate total service tax
+                    const taxAmount = (roomRate * serviceTax) / 100;
+                    totalBillAmount = roomRate + taxAmount + extraActivities;
+        
+                    // Display total bill
+                    document.getElementById('total-bill').innerText = `Total Bill: $${totalBillAmount.toFixed(2)}`;
+                }
+        
+                function applyCoupon() {
+                    const couponCode = document.getElementById('coupon-code').value.trim();
+                    let discount = 0;
+        
+                    // Example of coupon logic
+                    if (couponCode === "SAVE10") {
+                        discount = totalBillAmount * 0.10; // 10% discount
+                    } else if (couponCode === "SAVE20") {
+                        discount = totalBillAmount * 0.20; // 20% discount
+                    } else {
+                        alert("Invalid coupon code");
+                        return;
+                    }
+        
+                    totalBillAmount -= discount;
+        
+                    // Update total bill with discount
+                    document.getElementById('total-bill').innerHTML = `
+                        <span class="discount">Coupon applied: -$${discount.toFixed(2)}</span><br>
+                        Total Bill: $${totalBillAmount.toFixed(2)}
+                    `;
+                }
+            </script>
+</html>
+
+
+
+
+
+
